@@ -1,0 +1,66 @@
+<div id = "main-content" class = "container">
+  <h2 class = "text-center">User Information</h2>
+
+  <!-- warning if there is no user info to show -->
+  <div class = "row" ng-hide = "myCtrl.userPresent();">
+    <div class = "col-xs-12">
+      <div class = "alert alert-warning text-center">
+        No user information is present! You are not signed up yet. Sign up through the Sign Up option at the top of the screen.
+      </div>
+    </div>
+  </div> <!-- warning row -->
+
+  <div class = "row" ng-show = "myCtrl.userPresent();">
+    <div class = "col-xs-12">
+      <table class = "table">
+        <tr>
+          <td>First Name:</td>
+          <td>{{myCtrl.user.firstName}}</td>
+        </tr>
+        <tr>
+          <td>Last Name:</td>
+          <td>{{myCtrl.user.lastName}}</td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td>{{myCtrl.user.email}}</td>
+        </tr>
+        <tr>
+          <td>Phone:</td>
+          <td>{{myCtrl.user.phone}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class = "row" ng-show = "myCtrl.userPresent();">
+    <h3 class = "text-center">Favorite Dish</h3>
+    <div class = "col-md-3 col-xs-12">
+      <img class="img-responsive" width="250" height="150" ng-src="{{myCtrl.basePath}}/images/{{myCtrl.favorite.short_name}}.jpg" alt="{{myCtrl.favorite.name}}">
+    </div>
+    <div class = "col-md-9 col-xs-12">
+      <table class = "table">
+        <tr>
+          <td>Name:</td>
+          <td>{{myCtrl.favorite.name}}</td>
+        </tr>
+        <tr>
+          <td>Short Name:</td>
+          <td>{{myCtrl.favorite.short_name}}</td>
+        </tr>
+        <tr>
+          <td>Description:</td>
+          <td>{{myCtrl.favorite.description}}</td>
+        </tr>
+        <tr>
+          <td>Price (Large):</td>
+          <td>{{myCtrl.favorite.price_large}}</td>
+        </tr>
+        <tr>
+          <td>Price (Small):</td>
+          <td>{{myCtrl.favorite.price_small}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div> <!-- container -->
