@@ -1,148 +1,83 @@
-<!DOCTYPE html>
+<html lang="en" ng-app="starterApp" ng-controller="sideNavController as ctrl">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title ng-bind="'Colinotes | ' + title">myApp</title>
 
-<!-- Edits made by Colin Raymond 11/22/2016 -->
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>David Chu's China Bistro</title>
-    <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/restaurant.css">
-    <link rel="stylesheet" href="css/common.css">
-  </head>
-  <body ng-app="restaurant" ng-strict-di>
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
 
-    <!-- Fixed position loading indicator -->
-    <loading class="loading-indicator"></loading>
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 
-    <header>
-      <nav id="header-nav" class="navbar navbar-default">
-        <div class="container">
-          <div class="navbar-header">
-            <a href="index.html" class="pull-left visible-md visible-lg">
-              <div id="logo-img" alt="Logo image"></div>
-            </a>
+  <!-- Icon Library Stylesheet-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-            <div class="navbar-brand">
-              <a href="index.html"><h1>David Chu's China Bistro</h1></a>
-              <p>
-              <img src="images/star-k-logo.png" alt="Kosher certification">
-              <span>Kosher Certified</span>
-              </p>
-            </div>
+  <!-- Personal style sheet -->
+  <link rel="stylesheet" href="/css/app.css">
 
-            <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
+  <!-- Personal Javascript Library -->
+  <script src="/js/app.module.js"></script>
+  <script src="/js/app.router.js"></script>
+  <script src="/js/sidenav.ctrl.js"></script>
 
-          <div id="collapsable-nav" class="collapse navbar-collapse">
-            <ul id="nav-list" class="nav navbar-nav navbar-right">
-              <li id="navHomeButton" class="visible-xs">
-                <a href="index.html">
-                  <span class="glyphicon glyphicon-home"></span> Home</a>
-              </li>
-              <li id="navMenuButton" ui-sref-active="active">
-                <a ui-sref="public.menu">
-                  <span class="glyphicon glyphicon-cutlery"></span><br class="hidden-xs"> Menu</a>
-              </li>
-              <li>
-                <a ui-sref = "myInfo">
-                  <span class="glyphicon glyphicon-user"></span><br class="hidden-xs"> My Info </a>
-              </li>
-              <li>
-                <a ui-sref="signup">
-                  <span class="glyphicon glyphicon-pencil"></span><br class="hidden-xs" > Sign Up </a>
-              </li>
-              <li id="phone" class="hidden-xs">
-                <a href="tel:410-602-5008">
-                  <span>410-602-5008</span></a><div>* We Deliver</div>
-              </li>
-            </ul><!-- #nav-list -->
-          </div><!-- .collapse .navbar-collapse -->
-        </div><!-- .container -->
-      </nav><!-- #header-nav -->
-    </header>
+  <script src="/js/newnote.ctrl.js"></script>
 
-    <div id="call-btn" class="visible-xs">
-      <a class="btn" href="tel:410-602-5008">
-        <span class="glyphicon glyphicon-earphone"></span>
-        410-602-5008
-      </a>
-    </div>
-    <div id="xs-deliver" class="text-center visible-xs">* We Deliver</div>
-
-    <ui-view>
-      <div class="text-center initial-loading">
-        <h2>Loading Site...</h2>
+</head>
+<body ng-cloak>
+  <div layout="column" layout-fill>
+    <md-toolbar md-whiteframe="3">
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings" ng-click="ctrl.toggleNav()">
+          <md-icon>menu</md-icon>
+        </md-button>
+        <h2 flex>Colinotes</h2>
       </div>
-    </ui-view>
-
-    <footer class="panel-footer">
-      <div class="container">
-        <div class="row">
-          <section id="hours" class="col-sm-4">
-            <span>Hours:</span><br>
-            Sun-Thurs: 11:15am - 10:00pm<br>
-            Fri: 11:15am - 2:30pm<br>
-            Saturday Closed
-            <hr class="visible-xs">
-          </section>
-          <section id="address" class="col-sm-4">
-            <span>Address:</span><br>
-            7105 Reisterstown Road<br>
-            Baltimore, MD 21215
-            <p>* Delivery area within 3-4 miles, with minimum order of $20 plus $3 charge for all deliveries.</p>
-            <hr class="visible-xs">
-          </section>
-          <section id="testimonials" class="col-sm-4">
-            <p>"The best Chinese restaurant I've been to! And that's saying a lot, since I've been to many!"</p>
-            <p>"Amazing food! Great service! Couldn't ask for more! I'll be back again and again!"</p>
-          </section>
-        </div>
-        <div class="text-center">
-          &copy; Copyright David Chu's China Bistro 2016 |
-          <a ui-sref="admin.auth">Admin</a></div>
+    </md-toolbar>
+    <md-content>
+      <md-sidenav class="md-sidenav-left"
+                  md-component-id="left"
+                  md-whiteframe="3"
+                  md-is-open="ctrl.sideNav">
+        <md-list>
+          <md-list-item ng-click="ctrl.navigate('/')">
+            <span flex><md-icon>home</md-icon></span>
+            Welcome Page
+            <md-divider md-inset></md-divider>
+          </md-list-item>
+          <md-list-item ng-click="ctrl.navigate('/add_note')">
+            <span flex><md-icon>add</md-icon></span>
+            Create a Note
+            <md-divider md-inset></md-divider>
+          </md-list-item>
+          <md-list-item ng-click="ctrl.navigate('/review_notes')">
+            <span flex><md-icon>note</md-icon></span>
+            Review Notes
+            <md-divider md-inset></md-divider>
+          </md-list-item>
+          <md-list-item ng-click="ctrl.navigate('/settings')">
+            <span flex><md-icon>settings</md-icon></span>
+            Settings
+            <md-divider md-inset></md-divider>
+          </md-list-item>
+      </md-sidenav>
+      <div flex-md=75>
+        <ng-view></ng-view>
       </div>
-    </footer>
+    </md-content>
+  </div>
 
-    <!-- Libs -->
-    <script src="lib/jquery-2.1.4.min.js"></script>
-    <script src="lib/bootstrap.min.js"></script>
-    <script src="lib/angular.min.js"></script>
-    <script src="lib/angular-ui-router.min.js"></script>
 
-    <!-- Main Restaurant Module -->
-    <script src="src/restaurant.module.js"></script>
-
-    <!-- Common Module -->
-    <script src="src/common/common.module.js"></script>
-    <script src="src/common/loading/loading.component.js"></script>
-    <script src="src/common/loading/loading.interceptor.js"></script>
-    <script src="src/common/menu.service.js"></script>
-
-    <!-- Public Module -->
-    <script src="src/public/public.module.js"></script>
-    <script src="src/public/public.routes.js"></script>
-    <script src="src/public/menu/menu.controller.js"></script>
-    <script src="src/public/menu-category/menu-category.component.js"></script>
-    <script src="src/public/menu-items/menu-items.controller.js"></script>
-    <script src="src/public/menu-item/menu-item.component.js"></script>
-    <script src="src/public/sign-up/signup.controller.js"></script>
-    <script src="src/public/user/user.service.js"></script>
-    <script src="src/public/myInfo/myinfo.controller.js"></script>
-
-    <!-- ADMIN SITE -->
-
-    <!--Application files -->
-
-  </body>
-
+</body>
 </html>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+-->
