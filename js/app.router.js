@@ -13,7 +13,14 @@ starterApp.config(['$routeProvider',function($routeProvider){
     })
     .when('/review_notes', {
       title : 'Review Notes',
-      templateUrl : 'html/reviewnotes.html'
+      templateUrl : 'html/reviewnotes.html',
+      controller : 'reviewNoteController',
+      controllerAs : 'ctrl',
+      // resolve : {
+      //   noteList: function(getNotes) {
+      //     return reviewNoteService.getNotes();
+      //   }
+      // }
     })
     .when('/settings', {
       title : 'Settings',

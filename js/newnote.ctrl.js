@@ -1,6 +1,5 @@
 starterApp.controller('newNoteController', function($scope, $mdToast){
   var ctrl = this;
-  ctrl.test = "Test String";
   ctrl.note = {
     title : "",
     content : ""

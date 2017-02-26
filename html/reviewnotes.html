@@ -1,12 +1,27 @@
 <div layout="column" layout-fill>
-  <md-card>
-    <md-card-title>
-      <md-card-title-text>
-        <span class="md-headline">Review Notes</span>
-        <span class="md-subhead">Review, Edit, and Delete Existing Notes</span>
-      </md-card-title-text>
-    </md-card-title>
-    <md-card-content>
-    </md-card-content>
-  </md-card>
+  <div>
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Review Notes</span>
+          <span class="md-subhead">Review, Edit, and Delete Existing Notes</span>
+        </md-card-title-text>
+      </md-card-title>
+    </md-card>
+  </div>
+  <div>
+    <md-card>
+      <md-card-content>
+        <md-list class="md-dense">
+          <md-list-item class="md-2-line" ng-repeat="list in ctrl.noteList">
+            <div class="md-list-item-text" layout="column">
+              <h4>{{list.title}}</h4>
+              <p>{{list.content}}</p>
+            </div>
+            <md-divider ng-if="!$last"></md-divider>
+          </md-list-item>
+        </md-list>
+      </md-card-content>
+    </md-card>
+  </div>
 </div>
